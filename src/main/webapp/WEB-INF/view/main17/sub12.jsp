@@ -6,7 +6,7 @@
 </head>
 <body>
 <c:import url="/WEB-INF/fragment/navbar6.jsp">
-    <c:param name="current" value="sub12"/>
+    <c:param name="current" value="sub11"></c:param>
 </c:import>
 <div>sub12</div>
 </body>

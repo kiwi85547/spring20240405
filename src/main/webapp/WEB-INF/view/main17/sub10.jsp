@@ -6,8 +6,18 @@
 </head>
 <body>
 <c:import url="/WEB-INF/fragment/navbar6.jsp">
-    <c:param name="current" value="sub10"/>
+    <c:param name="current" value="sub10"></c:param>
 </c:import>
-<div>sub10</div>
+<div>
+    <form action="">
+        <div>
+            아이디
+            <input type="text" name="id">
+        </div>
+        <div>
+            <button>로그인</button>
+        </div>
+    </form>
+</div>
 </body>
 </html>

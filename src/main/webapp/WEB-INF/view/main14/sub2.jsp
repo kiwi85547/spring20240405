@@ -11,6 +11,6 @@ ${myBean142List}
 <p>${myBean142List[0].name}</p>
 <p>${myBean142List[1].name}</p>
 
-<c:forEach items="${myBean142List.name}" var="name">${name}</c:forEach>
+<c:forEach items="${myBean142List}" var="list">${list}</c:forEach>
 </body>
 </html>
