@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 @Controller
@@ -34,6 +35,8 @@ public class Controller20 {
         // 4. 뷰로 forward(뷰 이름 리턴)
     }
     @RequestMapping("sub6")
+//    아래처럼 @RequestParam을 이용해서 쓸 수도 있음
+//    public void sub6(@RequestParam(value = "address",required = false) String a){}
     public void sub6(String address, String type, Model model){
         model.addAttribute("res",address+"의 "+type+" 검색 결과");
     }
@@ -46,7 +49,15 @@ public class Controller20 {
                      Model model){
         model.addAttribute("name",name);
         model.addAttribute("age",age);
+        HashMap<String,String> map = new HashMap<>();
+        map.put("hobby",hobby);
+        map.put("address",address);
+        map.put("birth",birth);
+        map.put("age", String.valueOf(age));
+        map.put("name", name);
+        model.addAttribute("map",map);
         model.addAttribute("result", Map.of("name",name,"age",age,"birth",birth));
+
         System.out.println("name = " + name);
         System.out.println("age = " + age);
         System.out.println("birth = " + birth);
@@ -57,8 +68,9 @@ public class Controller20 {
 //    set 메소드 활용해서 .. 땡땡.. 12시25분 설명
 //    ModelAttribute의 프로퍼티에 바인딩됨
     public void sub8(@ModelAttribute MyBean201 data){
+        // 객체의 모델어트리뷰트에 넣어놓으면 모델어트리뷰트의 set메소드를 활용해서 프로퍼티에 바인딩해준다.
 //        @ModelAttribute 생략 가능
-//        주석을 안쓰면 request param이나 , ModelAttribute 로 간주
+//        주석을 안쓰면 @RequestParam이나 , @ModelAttribute 로 간주
         System.out.println(data);
     }
     @RequestMapping("sub9")
