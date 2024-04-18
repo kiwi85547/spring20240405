@@ -3,8 +3,7 @@ package com.study.Controller;
 import com.study.domain.MyBean251;
 import com.study.domain.MyBean252;
 import com.study.domain.MyBean253;
-import com.study.domain.MyBean254Customer;
-import org.eclipse.tags.shaded.org.apache.xpath.operations.Mod;
+import com.study.domain.MyBean254Employees;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -226,7 +225,7 @@ public class Controller25 {
     public String method8(@RequestParam(value = "name", required = false) String search, Model model)throws SQLException{
         String sql = "SELECT * FROM Employees WHERE lastName LIKE ? OR FirstName LIKE ?";
         String keyword = "%"+search+"%";
-        var list = new ArrayList<MyBean254Customer>();
+        var list = new ArrayList<MyBean254Employees>();
 
         Connection conn = dataSource.getConnection();
         PreparedStatement pstmt =conn.prepareStatement(sql);
@@ -235,7 +234,7 @@ public class Controller25 {
         ResultSet rs = pstmt.executeQuery();
         try(rs;pstmt;conn){
             while(rs.next()){
-                MyBean254Customer obj = new MyBean254Customer();
+                MyBean254Employees obj = new MyBean254Employees();
                 obj.setEmployeeID(rs.getString(1));
                 obj.setLastName(rs.getString(2));
                 obj.setFirstName(rs.getString(3));
