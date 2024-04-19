@@ -4,18 +4,26 @@
 <head>
     <title>Title</title>
     <style>
-        table,tr,th,td{
+        table, tr, th, td {
             border: 1px solid black;
             border-collapse: collapse;
         }
-        table{
+
+        table {
             width: 100%;
         }
-        thead{
+
+        thead {
             background-color: cadetblue;
         }
-        td:first-child{
+
+        td:first-child {
             text-align: center;
+        }
+
+        .active {
+            background-color: blue;
+            color: white;
         }
     </style>
 </head>
@@ -47,5 +55,52 @@
     </c:forEach>
     </tbody>
 </table>
+<div>
+    <c:if test="${currentPage != 1}">
+        <c:url var="link" value="/main27/sub1">
+            <c:param name="page" value="1"/>
+        </c:url>
+        <span>
+            <a href="${link}">맨앞</a>
+        </span>
+    </c:if>
+
+
+    <c:if test="${not empty prevPageNumber}">
+        <c:url var="link" value="/main27/sub1">
+            <c:param name="page" value="${prevPageNumber}"/>
+        </c:url>
+        <span>
+            <a href="${link}">이전</a>
+        </span>
+    </c:if>
+
+    <c:forEach begin="${beginPageNumber}" end="${endPageNumber}" var="pageNumber">
+        <c:url var="link" value="/main27/sub1">
+            <c:param name="page" value="${pageNumber}"/>
+        </c:url>
+        <span>
+            <a class="${currentPage eq pageNumber ? 'active' : '' }" href="${link}">${pageNumber}</a>
+        </span>
+    </c:forEach>
+
+    <c:if test="${not empty nextPageNumber}">
+        <c:url var="link" value="/main27/sub1">
+            <c:param name="page" value="${nextPageNumber}"/>
+        </c:url>
+        <span>
+        <a href="${link}">다음</a>
+    </span>
+    </c:if>
+
+    <c:if test="${currentPage != lastPageNumber}">
+        <c:url var="link" value="/main27/sub1">
+            <c:param name="page" value="${lastPageNumber}"/>
+        </c:url>
+        <span>
+            <a href="${link}">맨뒤</a>
+        </span>
+    </c:if>
+</div>
 </body>
 </html>

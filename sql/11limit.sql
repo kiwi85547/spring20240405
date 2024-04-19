@@ -25,8 +25,8 @@ SELECT * FROM Products ORDER BY Price LIMIT 5,10; # 5부터 10까지
 
 # paging
 
-                                                  # 한 페이지에 10개씩 조회할 때
-                                                  # 1페이지 : LIMIT 0,10
+# 한 페이지에 10개씩 조회할 때
+# 1페이지 : LIMIT 0,10
 SELECT CustomerID, CustomerName FROM Customers ORDER BY CustomerID LIMIT 0,10;
 
 # 2페이지 : LIMIT 10,10;     #3페이지 : LIMIT 20,10
