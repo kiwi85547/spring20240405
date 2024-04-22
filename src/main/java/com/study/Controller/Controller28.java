@@ -16,7 +16,7 @@ import java.sql.SQLException;
 
 @Controller
 @RequestMapping("main28")
-public class Controllere28 {
+public class Controller28 {
     @Autowired
     private DataSource dataSource;
 
@@ -73,15 +73,19 @@ public class Controllere28 {
             pstmt.setString(2, employees.getFirstName());
 //            date 설정
             pstmt.setDate(3, employees.getBirthDate());
+            // setString 가능
+//            pstmt.setString(3, employees.getBirthDate());
             pstmt.setString(4, employees.getPhoto());
             pstmt.setString(5, employees.getNotes());
 
             int row = pstmt.executeUpdate();
             if (row == 1) {
                 redirectAttributes.addFlashAttribute("message", "새 고객이 등록되었습니다.");
+            } else {
+                redirectAttributes.addFlashAttribute("message", "문제가 발생하였습니다.");
             }
         }
-
+        // 마지막 요청이 get방식으로 바뀜
         return "redirect:/main28/sub2";
     }
 }
