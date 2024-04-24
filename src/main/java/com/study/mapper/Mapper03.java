@@ -54,4 +54,16 @@ public interface Mapper03 {
                 WHERE EmployeeId=#{employeeID}
             """)
     int updateEmployee(MyBean254Employees employee);
+
+    @Update("""
+            UPDATE Customers
+            SET CustomerName=#{name},
+                ContactName=#{contactName},
+                Address=#{address},
+                City=#{city},
+                Country=#{country},
+                PostalCode=#{postalCode}
+            WHERE CustomerId=#{id}
+            """)
+    int updateCustomer(MyBean254Customer customer);
 }

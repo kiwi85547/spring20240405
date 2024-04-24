@@ -83,5 +83,28 @@ public class Controller32 {
         return "redirect:/main32/sub6";
     }
 
+    // todo : 고객 조회 후 수정
+    @GetMapping("sub7")
+    // 메소드 파라미터의 이름과 리퀘스트 파람의 이름이 같으면 생략해도 됨
+    public void method7(Integer id, Model model) {
+        if (id != null) {
+            //쿼리 작성
+            MyBean254Customer c = mapper02.selectOneCustomer4(id);
+            //일한 결과를 모델에 담기
+            model.addAttribute("customer", c);
+        }
+    }
 
+    // "sub7"로 해도 됨. get방식과 방식이 다르므로
+    @PostMapping("sub7/update")
+    // 포스트는 받는 쪽
+    // 자바빈의 프로퍼티에 바인딩. 보내는 쪽의 리퀘스트파라미터와 받는 쪽의 프로퍼티가 같아야 함
+    // 이미 만든 빈을 쓰려면 보내는 쪽의 리퀘스트파라미터도 같아야 함. input name과 자바빈 프로퍼티가 같게 해야함
+    public String method8(MyBean254Customer customer, RedirectAttributes rttr) {
+        // mapper에게 넘겨주기
+        int rowCount = mapper.updateCustomer(customer);
+        // 새로고침 했을 때 get방식으로 넘어감
+        rttr.addAttribute("id", customer.getId());
+        return "redirect:/main32/sub7";
+    }
 }
