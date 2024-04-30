@@ -41,15 +41,16 @@ public interface Mapper05 {
     }
 
     @Select("""
-            SELECT c.customerID, c.CustomerName, SUM(od.Quantity * p.Price) orderPrice
+            SELECT c.customerID, c.CustomerName, SUM(od.Quantity * p.Price) AS orderPrice
             FROM Products p
                      JOIN OrderDetails od ON od.ProductID = p.ProductID
                      JOIN Orders o ON o.OrderID = od.OrderID
                      JOIN Customers c ON c.CustomerID = o.CustomerID
-            WHERE o.OrderDate BETWEEN ${from} AND ${to}
+            WHERE o.OrderDate BETWEEN #{from} AND #{to}
             GROUP BY c.CustomerName
             ORDER BY orderPrice DESC
             """)
     List<CustomerOrder> selectCustomerOrderList(String from, String to);
+//    List<Map<String,Object>> selectCustomerOrderList(String from, String to);
 
 }
