@@ -8,6 +8,6 @@ public class MyBean411 {
     private Integer age;
 
     public String getDesc() {
-        return "get메소드";
+        return STR."get메소드 예제. 이름은 \{name}이고 나이는 \{age}세 입니다.";
     }
 }
