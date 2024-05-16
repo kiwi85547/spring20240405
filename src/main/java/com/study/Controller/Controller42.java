@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+import java.util.Map;
+
 @Controller
 @RequestMapping("/api/main42")
 public class Controller42 {
@@ -25,5 +28,15 @@ public class Controller42 {
         } else if (random > 1.0 / 3 && random < 2.0 / 3) {
             return "바위";
         } else return "보";
+    }
+
+    @GetMapping("sub3")
+    @ResponseBody
+    public Map<String, Object> sub3() {
+        return Map.of("name", "화영",
+                "age", 33,
+                "married", true,
+                "info", Map.of("team", "family", "city", "서울"),
+                "person", List.of("수환", "수아", "재후"));
     }
 }
