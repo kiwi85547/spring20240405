@@ -39,4 +39,10 @@ public class Controller42 {
                 "info", Map.of("team", "family", "city", "서울"),
                 "person", List.of("수환", "수아", "재후"));
     }
+
+    @GetMapping("sub4")
+    @ResponseBody
+    public Map<String, Object> sub4() {
+        return Map.of("게임", "가위바위보", "game", List.of("가위", "바위", "보"));
+    }
 }
