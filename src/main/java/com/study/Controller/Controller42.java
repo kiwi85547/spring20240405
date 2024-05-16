@@ -1,6 +1,7 @@
 package com.study.Controller;
 
 import com.study.domain.MyBean411;
+import com.study.domain.MyBean412;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,6 +54,21 @@ public class Controller42 {
         MyBean411 obj = new MyBean411();
         obj.setName("이강인");
         obj.setAge(55);
+        return obj;
+    }
+
+    @GetMapping("/sub6")
+    @ResponseBody
+    public MyBean412 method6() {
+        MyBean412 obj = new MyBean412();
+        obj.setId(3);
+        obj.setAlphabet("a");
+        obj.set한글(List.of("한글", "세종대왕", "측우기", "장영실"));
+        obj.setPoint(3);
+        MyBean411 myBean411 = new MyBean411();
+        myBean411.setAge(12);
+        myBean411.setName("리액트");
+        obj.setInfo(myBean411);
         return obj;
     }
 }
