@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -24,6 +25,7 @@ import java.security.interfaces.RSAPublicKey;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity // @PreAuthorize("hasAuthority('SCOPE_admin')")의 메소드가 작동할 수 있도록 함
 public class SecurityConfiguration {
 
     @Value("${jwt.public.key}")
@@ -32,6 +34,7 @@ public class SecurityConfiguration {
     @Value("${jwt.private.key}")
     RSAPrivateKey priv;
 
+    // 필터가 잘 작동해줌
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable());
